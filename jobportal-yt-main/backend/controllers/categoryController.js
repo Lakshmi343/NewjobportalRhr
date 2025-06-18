@@ -23,6 +23,8 @@ export const createCategory = async (req, res) => {
     }
 };
 
+
+
 export const getCategories = async (req, res) => {
     try {
         const categories = await Category.find();
