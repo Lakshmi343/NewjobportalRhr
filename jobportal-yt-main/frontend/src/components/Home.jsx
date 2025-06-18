@@ -22,7 +22,8 @@ const Home = () => {
     <div>
       <Navbar />
       <HeroSection />
-      <CategoryCarousel />
+      
+    
       <LatestJobs />
       <CategoryList/>
       <Footer />

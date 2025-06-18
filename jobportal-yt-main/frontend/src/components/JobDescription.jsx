@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { Badge } from './ui/badge'
 import { Button } from './ui/button'
@@ -9,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
 
 const JobDescription = () => {
+
     const {singleJob} = useSelector(store => store.job);
     const {user} = useSelector(store=>store.auth);
     const isIntiallyApplied = singleJob?.applications?.some(application => application.applicant === user?._id) || false;
@@ -23,10 +25,9 @@ const JobDescription = () => {
             const res = await axios.get(`${APPLICATION_API_END_POINT}/apply/${jobId}`, {withCredentials:true});
             
             if(res.data.success){
-                setIsApplied(true); // Update the local state
+                setIsApplied(true); 
                 const updatedSingleJob = {...singleJob, applications:[...singleJob.applications,{applicant:user?._id}]}
-                dispatch(setSingleJob(updatedSingleJob)); // helps us to real time UI update
-                toast.success(res.data.message);
+                dispatch(setSingleJob(updatedSingleJob)); 
 
             }
         } catch (error) {

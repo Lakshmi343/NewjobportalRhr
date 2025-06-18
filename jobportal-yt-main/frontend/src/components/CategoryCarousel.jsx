@@ -32,23 +32,27 @@ const CategoryCarousel = () => {
     }, []);
 
     return (
-        <div>
-            <Carousel className="w-full max-w-xl mx-auto my-20">
-                <CarouselContent>
-                    {categories.map((cat, index) => (
-                        <CarouselItem key={cat._id} className="md:basis-1/2 lg:basis-1/3 h-10">
-                            <Button
-                                onClick={() => searchJobHandler(cat.name)}
-                                variant="outline"
-                                className="rounded-full"
-                            >
-                                {cat.name}
-                            </Button>
+        <div className="w-full">
+            <Carousel className="w-full max-w-4xl mx-auto">
+                <CarouselContent className="py-4">
+                    {categories.map((cat) => (
+                        <CarouselItem key={cat._id} className="md:basis-1/2 lg:basis-1/3">
+                            <div className="p-2">
+                                <Button
+                                    onClick={() => searchJobHandler(cat.name)}
+                                    variant="ghost"
+                                    className="w-full text-lg font-medium hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                                >
+                                    {cat.name}
+                                </Button>
+                            </div>
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
+                <div className="flex justify-center gap-4 mt-6">
+                    <CarouselPrevious className="static translate-y-0 hover:bg-purple-50 text-purple-600" />
+                    <CarouselNext className="static translate-y-0 hover:bg-purple-50 text-purple-600" />
+                </div>
             </Carousel>
         </div>
     );
